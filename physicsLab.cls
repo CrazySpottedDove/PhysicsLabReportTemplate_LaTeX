@@ -1,6 +1,7 @@
 \ProvidesClass{physicsLab}
 \LoadClass[a4paper]{ctexart}
 \RequirePackage{amsmath}
+\RequirePackage{upgreek}
 \RequirePackage{tabularray}
 \RequirePackage{fontspec}
 \RequirePackage{titlesec}
@@ -95,6 +96,15 @@
 			\IfNoValueF{#1}{\caption{#1}\IfNoValueF{#3}{\em #3}}
 		\end{minipage}
 	}
+}
+\NewDocumentCommand{\notframed}{omo}{%
+	\begin{center}
+		\begin{minipage}{\widthof{#2}+2em}
+			\quad\\[2ex]
+			\centering #2
+			\IfNoValueF{#1}{\caption{#1}\IfNoValueF{#3}{\em #3}}
+		\end{minipage}
+	\end{center}
 }
 \usepackage{tikz}
 \usetikzlibrary{calc}
