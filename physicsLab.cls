@@ -134,36 +134,37 @@
 		\ifbool{xfield}{
 			\ifbool{yfield}{
 				\begin{axis}[xlabel={\xlabel},ylabel={\ylabel},xmin=\xmin,xmax=\xmax,ymin=\ymin,ymax=\ymax,\IfNoValueF{#2}{#2,} legend pos= outer north east,grid= major,\IfBooleanT{#3}{axis equal,}]
-				}{
-					\begin{axis}[xlabel={\xlabel},ylabel={\ylabel},xmin=\xmin,xmax=\xmax,\IfNoValueF{#2}{#2,} legend pos= outer north east,grid= major,\IfBooleanT{#3}{axis equal,}]
-					}
-				}{
-					\ifbool{yfield}{
-						\begin{axis}[xlabel={\xlabel},ylabel={\ylabel},ymin=\ymin,ymax=\ymax,\IfNoValueF{#2}{#2,} legend pos= outer north east,grid= major,\IfBooleanT{#3}{axis equal,}]
-						}{
-							\begin{axis}[xlabel={\xlabel},ylabel={\ylabel},\IfNoValueF{#2}{#2,} legend pos= outer north east,grid= major,\IfBooleanT{#3}{axis equal,}]
-							}
-						}
-					}{
-				\end{axis}\end{tikzpicture}\setboolean{xfield}{false}\setboolean{yfield}{false}
+			}{
+				\begin{axis}[xlabel={\xlabel},ylabel={\ylabel},xmin=\xmin,xmax=\xmax,\IfNoValueF{#2}{#2,} legend pos= outer north east,grid= major,\IfBooleanT{#3}{axis equal,}]
 			}
+		}{
+			\ifbool{yfield}{
+				\begin{axis}[xlabel={\xlabel},ylabel={\ylabel},ymin=\ymin,ymax=\ymax,\IfNoValueF{#2}{#2,} legend pos= outer north east,grid= major,\IfBooleanT{#3}{axis equal,}]
+			}{
+				\begin{axis}[xlabel={\xlabel},ylabel={\ylabel},\IfNoValueF{#2}{#2,} legend pos= outer north east,grid= major,\IfBooleanT{#3}{axis equal,}]
+			}
+		}
+}
+{
+	\end{axis}\end{tikzpicture}\setboolean{xfield}{false}\setboolean{yfield}{false}
+}
 			
-			\NewDocumentCommand{\datapoint}{O{}mo}{
-				\ifcase\value{markstyle}
-				\addplot[mark=*,solid,black,#1] coordinates {#2 };
-				\IfNoValueF{#3}{\addlegendentry{#3 }}\stepcounter{markstyle}
-				\or
-				\addplot[mark=square*,dashed,green,#1] coordinates {#2 };
-				\IfNoValueF{#3}{\addlegendentry{#3 }}\stepcounter{markstyle}
-				\or
-				\addplot[mark=diamond*,dotted,red,#1] coordinates {#2 };
-				\IfNoValueF{#3}{\addlegendentry{#3 }}\stepcounter{markstyle}
-				\or
-				\addplot[mark=triangle*,blue,#1] coordinates {#2 };
-				\IfNoValueF{#3}{\addlegendentry{#3 }}\stepcounter{markstyle}
-				\or
-				\addplot[mark=cross,yellow,#1] coordinates {#2 };
-				\IfNoValueF{#3}{\addlegendentry{#3 }}\stepcounter{markstyle}
-				\fi
-			}
+\NewDocumentCommand{\datapoint}{O{}mo}{
+	\ifcase\value{markstyle}
+		\addplot[mark=*,solid,black,#1] coordinates {#2 };
+		\IfNoValueF{#3}{\addlegendentry{#3 }}\stepcounter{markstyle}
+	\or
+		\addplot[mark=square*,dashed,green,#1] coordinates {#2 };
+		\IfNoValueF{#3}{\addlegendentry{#3 }}\stepcounter{markstyle}
+	\or
+		\addplot[mark=diamond*,dotted,red,#1] coordinates {#2 };
+		\IfNoValueF{#3}{\addlegendentry{#3 }}\stepcounter{markstyle}
+	\or
+		\addplot[mark=triangle*,blue,#1] coordinates {#2 };
+		\IfNoValueF{#3}{\addlegendentry{#3 }}\stepcounter{markstyle}
+	\or
+		\addplot[mark=cross,yellow,#1] coordinates {#2 };
+		\IfNoValueF{#3}{\addlegendentry{#3 }}\stepcounter{markstyle}
+	\fi
+}
 \endinput
