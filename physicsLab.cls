@@ -4,6 +4,8 @@
 \RequirePackage{tabularray}
 \RequirePackage{fontspec}
 \RequirePackage{titlesec}
+\RequirePackage{geometry}
+\geometry{left=3cm,right=3cm}
 \pagestyle{plain}
 \newcommand{\fakebold}[1]{%
 	\pdfliteral direct {2 Tr 0.4 w}% 启用描边模式，并设定描边宽度为 0.4
@@ -20,7 +22,7 @@
 \newcommand{\xiaosi}{\fontsize{12pt}{14pt}\selectfont}
 \providecommand{\Romannumeral}[1]{\uppercase\expandafter{\romannumeral #1}}
 %支持大写罗马字母显示
-\NewDocumentCommand{\listbox}{mO{23em}mO{4ex}}{
+\NewDocumentCommand{\listbox}{mO{20em}mO{4ex}}{
     \mbox{#1}%
     \begin{minipage}[t][2ex][t]{#2}
         \centering
@@ -36,11 +38,13 @@
         \textbf{普通物理学实验\Romannumeral{2}}\\
         \textbf{电子实验报告}\\[7.6ex]
     \end{center}
-    \listbox{\sanhao\bfseries 实验名称：}{\sanhao \bfseries #1}[8ex]
-    \listbox{\sanhao\bfseries 指导教师：}{\sanhao \bfseries #2}[18ex]
-    \listbox{\sihao\bfseries 班级：}[26.5em]{\sihao \bfseries #3}
-    \listbox{\sihao\bfseries 姓名：}[26.5em]{\sihao\bfseries #4}
-    \listbox{\sihao\bfseries 学号：}[26.5em]{\sihao\bfseries #5}[8ex]
+    \begin{center}
+    	\listbox{\sanhao\bfseries 实验名称：}{\sanhao \bfseries #1}[8ex]
+    	\listbox{\sanhao\bfseries 指导教师：}{\sanhao \bfseries #2}[18ex]
+    	\listbox{\sihao\bfseries 班级：}[23.5em]{\sihao \bfseries #3}
+    	\listbox{\sihao\bfseries 姓名：}[23.5em]{\sihao\bfseries #4}
+    	\listbox{\sihao\bfseries 学号：}[23.5em]{\sihao\bfseries #5}[8ex]
+    \end{center}
     \begin{center}
     	\sihao \bfseries 实验日期：%
     	\begin{minipage}[t][2ex][t]{2.5em}
