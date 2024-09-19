@@ -7,4 +7,5 @@
 
 如果需要修改实验上/下午，在.cls文件内找到并修改即可。
 ## More
-拥有 https://github.com/CrazySpottedDove/Lab-Assistance.git 内生成代码的依赖。
+* 拥有 https://github.com/CrazySpottedDove/Lab-Assistance.git 内生成代码的依赖。
+* 如果是使用TexStudio的windows用户，可将class-physicsLab.cwl文件放置在C:\Users\你的用户名\AppData\Roaming\texstudio\completion\user目录下以启用语法补全

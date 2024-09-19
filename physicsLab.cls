@@ -13,7 +13,7 @@
 	#1% 打印文字
 	\pdfliteral direct {0 Tr 0 w}% 恢复正常模式
 }
-\setCJKmainfont{simsun.ttc}[AutoFakeBold] 
+\setCJKmainfont{simsun.ttc}[AutoFakeBold]
 \newcommand{\xiaochu}{\fontsize{36pt}{44pt}\selectfont}
 % 小初字体大小
 \newcommand{\sanhao}{\fontsize{16pt}{19pt}\selectfont}
@@ -65,7 +65,7 @@
     		\hspace{0pt}#8\\[-16pt]
     		\rule{\linewidth}{1.2pt}
     	\end{minipage}%
-    	日\qquad 
+    	日\qquad
     	星期%
     	\begin{minipage}[t][2ex][t]{2em}
     		\centering
@@ -158,7 +158,7 @@
 {
 	\end{axis}\end{tikzpicture}\setboolean{xfield}{false}\setboolean{yfield}{false}
 }
-			
+
 \NewDocumentCommand{\datapoint}{O{}mo}{
 	\ifcase\value{markstyle}
 		\addplot[mark=*,solid,black,#1] coordinates {#2 };
@@ -177,4 +177,8 @@
 		\IfNoValueF{#3}{\addlegendentry{#3 }}\stepcounter{markstyle}
 	\fi
 }
+
+\RequirePackage{graphicx}
+\NewDocumentEnvironment{singlefigure}{omO{0.7}}{\begin{figure}[H]\centering\includegraphics[width=#3\textwidth]{#2}\IfNoValueF{#1}{\vspace{-1.2ex}\caption{#1}}}{\end{figure}}
+%单张图片，环境内容为注释，均居中
 \endinput
