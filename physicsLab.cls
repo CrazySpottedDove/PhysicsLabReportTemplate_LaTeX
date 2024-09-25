@@ -137,10 +137,12 @@
 	}
 }
 \newcounter{markstyle}
+\newcounter{funcstyle}
 \NewDocumentEnvironment{plot}{mos}{
 	#1%
 	\begin{tikzpicture}
 		\setcounter{markstyle}{0}
+        \setcounter{funcstyle}{0}
 		\ifbool{xfield}{
 			\ifbool{yfield}{
 				\begin{axis}[xlabel={\xlabel},ylabel={\ylabel},xmin=\xmin,xmax=\xmax,ymin=\ymin,ymax=\ymax,\IfNoValueF{#2}{#2,} legend pos= outer north east,grid= major,\IfBooleanT{#3}{axis equal,}]
@@ -164,17 +166,35 @@
 		\addplot[mark=*,solid,black,#1] coordinates {#2 };
 		\IfNoValueF{#3}{\addlegendentry{#3 }}\stepcounter{markstyle}
 	\or
-		\addplot[mark=square*,dashed,green,#1] coordinates {#2 };
+		\addplot[mark=square*,solid,green,#1] coordinates {#2 };
 		\IfNoValueF{#3}{\addlegendentry{#3 }}\stepcounter{markstyle}
 	\or
-		\addplot[mark=diamond*,dotted,red,#1] coordinates {#2 };
+		\addplot[mark=diamond*,solid,red,#1] coordinates {#2 };
 		\IfNoValueF{#3}{\addlegendentry{#3 }}\stepcounter{markstyle}
 	\or
-		\addplot[mark=triangle*,blue,#1] coordinates {#2 };
+		\addplot[mark=triangle*,solid,blue,#1] coordinates {#2 };
 		\IfNoValueF{#3}{\addlegendentry{#3 }}\stepcounter{markstyle}
 	\or
-		\addplot[mark=cross,yellow,#1] coordinates {#2 };
+		\addplot[mark=cross,solid,yellow,#1] coordinates {#2 };
 		\IfNoValueF{#3}{\addlegendentry{#3 }}\stepcounter{markstyle}
+	\fi
+}
+\NewDocumentCommand{\functionline}{mmo}{
+	\ifcase\value{funcstyle}
+		\addplot[solid,black,no markers, domain=#1] {#2 };
+		\IfNoValueF{#3}{\addlegendentry{#3 }}\stepcounter{funcstyle}
+	\or
+		\addplot[solid,green,no markers, domain=#1] {#2 };
+		\IfNoValueF{#3}{\addlegendentry{#3 }}\stepcounter{funcstyle}
+	\or
+		\addplot[solid,red,no markers, domain=#1] {#2 };
+		\IfNoValueF{#3}{\addlegendentry{#3 }}\stepcounter{funcstyle}
+	\or
+		\addplot[solid,blue,no markers, domain=#1] {#2 };
+		\IfNoValueF{#3}{\addlegendentry{#3 }}\stepcounter{funcstyle}
+	\or
+		\addplot[solid,yellow,no markers,domain=#1] {#2 };
+		\IfNoValueF{#3}{\addlegendentry{#3 }}\stepcounter{funcstyle}
 	\fi
 }
 

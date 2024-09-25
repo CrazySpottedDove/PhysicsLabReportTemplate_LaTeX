@@ -18,7 +18,8 @@
 \datapoint[color]{data}
 \datapoint{data}[legend]
 \datapoint{data}
-
+\functionline{domain}{function}[legend]
+\functionline{domain}{function}
 \maketitlepage{实验名称}{指导教师}{班级}{姓名}{学号}{年}{月}{日}{星期}
 
 \begin{singlefigure}[标题]{imagefile}[大小]
