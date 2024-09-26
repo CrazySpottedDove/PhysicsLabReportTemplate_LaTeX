@@ -93,7 +93,7 @@
 		\begin{minipage}{\widthof{#2}+2em}
 			\quad\\[2ex]
 			\centering #2
-			\IfNoValueF{#1}{\caption{#1}\IfNoValueF{#3}{\em #3}}
+			\IfNoValueF{#1}{\caption{#1}\IfNoValueF{#3}{\quad\\[-2ex]\em #3}}
 		\end{minipage}
 	}
 }
@@ -102,7 +102,7 @@
 		\begin{minipage}{\widthof{#2}+2em}
 			\quad\\[2ex]
 			\centering #2
-			\IfNoValueF{#1}{\caption{#1}\IfNoValueF{#3}{\em #3}}
+			\IfNoValueF{#1}{\caption{#1}\IfNoValueF{#3}{\quad\\[-2ex]\em #3}}
 		\end{minipage}
 	\end{center}
 }
