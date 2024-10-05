@@ -2,6 +2,13 @@
 #include: tabularray
 #include: amsmath
 #include: graphicx
+#include: upgreek
+#include: tikz
+
+\Romannumeral{num}
+
+\framed[标题]{内容}[注释]
+\notframed[标题]{内容}[注释]
 
 \xstyle{xlabel}
 \xstyle{xlabel}[xmin][xmax]
@@ -21,6 +28,7 @@
 \functionline{domain}{function}[legend]
 \functionline{domain}{function}
 \maketitlepage{实验名称}{指导教师}{班级}{姓名}{学号}{年}{月}{日}{星期}
+\
 
 \begin{singlefigure}[标题]{imagefile}[大小]
 \begin{singlefigure}{imagefile}
