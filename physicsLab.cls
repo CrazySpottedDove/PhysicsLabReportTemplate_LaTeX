@@ -1,8 +1,5 @@
 \ProvidesClass{physicsLab}
 \LoadClass[a4paper]{ctexart}
-\RequirePackage{amsmath}
-\RequirePackage{upgreek}
-\RequirePackage{tabularray}
 \RequirePackage{fontspec}
 \RequirePackage{titlesec}
 \RequirePackage{geometry}
@@ -83,120 +80,8 @@
 \titleformat{\section}[hang]{\sanhao\bfseries\raggedright}{\chinese{section}、}{1em}{}
 \titleformat{\subsection}[hang]{\sihao\bfseries\raggedright}{\thesubsection}{1em}{}
 \xiaosi
-\usepackage{bm}
-\usepackage{float}
-\usepackage{tabularray}
-\usepackage{calc}
-\usepackage{etoolbox}
-\NewDocumentCommand{\framed}{omo}{%
-	\framebox[\widthof{#2}+4em]{
-		\begin{minipage}{\widthof{#2}+2em}
-			\quad\\[2ex]
-			\centering #2
-			\IfNoValueF{#1}{\caption{#1}\IfNoValueF{#3}{\quad\\[-2ex]\em #3}}
-		\end{minipage}
-	}
-}
-\NewDocumentCommand{\notframed}{omo}{%
-	\begin{center}
-		\begin{minipage}{\widthof{#2}+2em}
-			\quad\\[2ex]
-			\centering #2
-			\IfNoValueF{#1}{\caption{#1}\IfNoValueF{#3}{\quad\\[-2ex]\em #3}}
-		\end{minipage}
-	\end{center}
-}
-\usepackage{tikz}
-\usetikzlibrary{calc}
-\usepackage{pgfplots}
-\usepackage{ifthen}
-\newcommand{\xlabel}{}
-\newcommand{\xmin}{}
-\newcommand{\xmax}{}
-\newcommand{\ylabel}{}
-\newcommand{\ymin}{}
-\newcommand{\ymax}{}
-\newboolean{xfield}
-\newboolean{yfield}
-\setboolean{xfield}{false}
-\setboolean{yfield}{false}
-\NewDocumentCommand{\xstyle}{moo}{
-	\renewcommand{\xlabel}{#1}
-	\IfNoValueF{#2}{
-		\setboolean{xfield}{true}
-		\renewcommand{\xmin}{#2}
-		\renewcommand{\xmax}{#3}
-	}
-}
-\NewDocumentCommand{\ystyle}{moo}{
-	\renewcommand{\ylabel}{#1}
-	\IfNoValueF{#2}{
-		\setboolean{yfield}{true}
-		\renewcommand{\ymin}{#2}
-		\renewcommand{\ymax}{#3}
-	}
-}
-\newcounter{markstyle}
-\newcounter{funcstyle}
-\NewDocumentEnvironment{plot}{mos}{
-	#1%
-	\begin{tikzpicture}
-		\setcounter{markstyle}{0}
-        \setcounter{funcstyle}{0}
-		\ifbool{xfield}{
-			\ifbool{yfield}{
-				\begin{axis}[xlabel={\xlabel},ylabel={\ylabel},xmin=\xmin,xmax=\xmax,ymin=\ymin,ymax=\ymax,\IfNoValueF{#2}{#2,} legend pos= outer north east,grid= major,\IfBooleanT{#3}{axis equal,}]
-			}{
-				\begin{axis}[xlabel={\xlabel},ylabel={\ylabel},xmin=\xmin,xmax=\xmax,\IfNoValueF{#2}{#2,} legend pos= outer north east,grid= major,\IfBooleanT{#3}{axis equal,}]
-			}
-		}{
-			\ifbool{yfield}{
-				\begin{axis}[xlabel={\xlabel},ylabel={\ylabel},ymin=\ymin,ymax=\ymax,\IfNoValueF{#2}{#2,} legend pos= outer north east,grid= major,\IfBooleanT{#3}{axis equal,}]
-			}{
-				\begin{axis}[xlabel={\xlabel},ylabel={\ylabel},\IfNoValueF{#2}{#2,} legend pos= outer north east,grid= major,\IfBooleanT{#3}{axis equal,}]
-			}
-		}
-}
-{
-	\end{axis}\end{tikzpicture}\setboolean{xfield}{false}\setboolean{yfield}{false}
-}
 
-\NewDocumentCommand{\datapoint}{O{}mo}{
-	\ifcase\value{markstyle}
-		\addplot[mark=*,solid,black,#1] coordinates {#2 };
-		\IfNoValueF{#3}{\addlegendentry{#3 }}\stepcounter{markstyle}
-	\or
-		\addplot[mark=square*,solid,green,#1] coordinates {#2 };
-		\IfNoValueF{#3}{\addlegendentry{#3 }}\stepcounter{markstyle}
-	\or
-		\addplot[mark=diamond*,solid,red,#1] coordinates {#2 };
-		\IfNoValueF{#3}{\addlegendentry{#3 }}\stepcounter{markstyle}
-	\or
-		\addplot[mark=triangle*,solid,blue,#1] coordinates {#2 };
-		\IfNoValueF{#3}{\addlegendentry{#3 }}\stepcounter{markstyle}
-	\or
-		\addplot[mark=cross,solid,yellow,#1] coordinates {#2 };
-		\IfNoValueF{#3}{\addlegendentry{#3 }}\stepcounter{markstyle}
-	\fi
-}
-\NewDocumentCommand{\functionline}{mmo}{
-	\ifcase\value{funcstyle}
-		\addplot[solid,black,no markers, domain=#1] {#2 };
-		\IfNoValueF{#3}{\addlegendentry{#3 }}\stepcounter{funcstyle}
-	\or
-		\addplot[solid,green,no markers, domain=#1] {#2 };
-		\IfNoValueF{#3}{\addlegendentry{#3 }}\stepcounter{funcstyle}
-	\or
-		\addplot[solid,red,no markers, domain=#1] {#2 };
-		\IfNoValueF{#3}{\addlegendentry{#3 }}\stepcounter{funcstyle}
-	\or
-		\addplot[solid,blue,no markers, domain=#1] {#2 };
-		\IfNoValueF{#3}{\addlegendentry{#3 }}\stepcounter{funcstyle}
-	\or
-		\addplot[solid,yellow,no markers,domain=#1] {#2 };
-		\IfNoValueF{#3}{\addlegendentry{#3 }}\stepcounter{funcstyle}
-	\fi
-}
+\RequirePackage{lab-assistance}
 
 \RequirePackage{graphicx}
 \NewDocumentEnvironment{singlefigure}{omO{0.7}}{\begin{figure}[H]\centering\includegraphics[width=#3\textwidth]{#2}\IfNoValueF{#1}{\vspace{-1.2ex}\caption{#1}}}{\end{figure}}
