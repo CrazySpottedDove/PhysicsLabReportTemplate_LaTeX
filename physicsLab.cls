@@ -57,7 +57,7 @@
     		\rule{\linewidth}{1.2pt}
     	\end{minipage}%
     	月%
-    	\begin{minipage}[t][2ex][t]{2.5em}
+    	\begin{minipage}[t][2ex][t]{4em}
     		\centering
     		\hspace{0pt}#8\\[-16pt]
     		\rule{\linewidth}{1.2pt}
